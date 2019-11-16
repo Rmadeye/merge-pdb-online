@@ -1,7 +1,6 @@
 from src.file_access import FileReader, FileWriter
 import shutil
 import os
-import pandas
 
 class Patcher:
     def patch(self, base_file: str, aux_file: str, out_file: str):

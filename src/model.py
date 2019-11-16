@@ -1,4 +1,3 @@
-import string
 class Atom:
     def __init__(self, row: str):
         self.serial_number = row[6:11]
