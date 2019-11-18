@@ -4,16 +4,16 @@ from typing import List
 
 
 class FileReader:
-    def __init__(self, filename: str):
-        self.filename = filename
+    def __init__(self, files: str):
+        self.files = files
+        print(files)
 
-    def read(self) -> List[Atom]:
+    def reader(self) -> List[Atom]:
         atoms = []
-
-        with io.open(self.filename) as file:
-            for row in file:
-                atom = Atom(row)
-                atoms.append(atom)
+        #with open(self.files, 'r') as file:
+        for row in self.files:
+            atom = Atom(row)
+            atoms.append(atom)
 
         return atoms
 
@@ -23,6 +23,6 @@ class FileWriter:
         self.filename = filename
 
     def write(self, atoms: List[Atom]):
-        with io.open(self.filename, "x") as file:
+        with io.open(self.filename, "w") as file:
             for atom in atoms:
                 file.write(f"{atom}\n")
