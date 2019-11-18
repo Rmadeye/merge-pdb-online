@@ -13,6 +13,7 @@ class Patcher:
 
         for i in range(len(atoms)):
             atom = atoms[i]
+            print(atom.residue_type)
             aux_atom = next(
                 (x for x in aux_atoms if x.name == atom.name and
                  x.residue_sequence_number == atom.residue_sequence_number and
@@ -26,8 +27,9 @@ class Patcher:
                 atom.z = aux_atom.z
                 atoms[i] = atom
 
-        #ligs = [aux_atom for aux_atom in aux_atoms if 'd' in aux_atom.chain_identifier]
-        output = atoms# + ligs
+        hets = [aux_atom for aux_atom in aux_atoms if 'LIG' in aux_atom.residue_type]
+        output = atoms + hets
+
 
         # shutil.rmtree('./tmp/')
         # for item in os.listdir('./'):
@@ -35,5 +37,6 @@ class Patcher:
         #         os.remove(os.path.join('./', item))
         # os.chdir("./out")
         output_writer.write(output)
-        print("File successfully converted")
+        return output
+
 

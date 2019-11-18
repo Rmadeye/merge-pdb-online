@@ -12,7 +12,8 @@ class FileReader:
         atoms = []
         #with open(self.files, 'r') as file:
         for row in self.files:
-            atom = Atom(row)
+            stringrow = str(row, 'utf-8')
+            atom = Atom(stringrow)
             atoms.append(atom)
 
         return atoms

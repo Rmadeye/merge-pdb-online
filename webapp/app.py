@@ -1,4 +1,4 @@
-from flask import Flask, make_response, request, render_template
+from flask import Flask, make_response, request, render_template, Response, send_file
 from src import patcher
 
 app = Flask(__name__)
@@ -17,15 +17,11 @@ def form():
 def merge():
     requested_rigid = request.files['rigid_pdb']
     requested_flex = request.files['flex_pdb']
-    #rigid_content = requested_rigid.stream.reader().decode("utf-8")
-    #flex_content = requested_flex.stream.reader().decode("utf-8")
-    merger = patcher.Patcher()
-    #output = merger.patch(rigid_content, flex_content, 'result.pdb')
-    output = merger.patch(requested_rigid, requested_flex, 'result.pdb')
-    response = make_response(output)
-    #response.headers["Content-Disposition"] = "attachment; filename=result.pdb"
 
-    return response
+    merger = patcher.Patcher()
+    merger.patch(requested_rigid, requested_flex, 'result.pdb')
+
+    return send_file('result.pdb', as_attachment=True)
 
 
 
