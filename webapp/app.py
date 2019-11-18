@@ -1,5 +1,6 @@
 from flask import Flask, make_response, request, render_template, Response, send_file
-from src import patcher
+from src import patcher, dataframe_prep, flex_prep
+import os
 
 app = Flask(__name__)
 
@@ -17,12 +18,18 @@ def form():
 def merge():
     requested_rigid = request.files['rigid_pdb']
     requested_flex = request.files['flex_pdb']
-
-    merger = patcher.Patcher()
-    merger.patch(requested_rigid, requested_flex, 'result.pdb')
+    """Dziala"""
+    # merger = patcher.Patcher()
+    # merger.patch(requested_rigid, requested_flex, 'result.pdb')
+    # """Bedzie"""
+    dfprep = flex_prep.tideTheModel()
+    dfprep.parse_the_dock(requested_rigid, requested_flex)
 
     return send_file('result.pdb', as_attachment=True)
 
+class AbsPath:
+    def main_cwd():
+        return os.path.dirname(app.instance_path)
 
 
 

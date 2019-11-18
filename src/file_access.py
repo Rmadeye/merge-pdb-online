@@ -6,15 +6,16 @@ from typing import List
 class FileReader:
     def __init__(self, files: str):
         self.files = files
-        print(files)
 
     def reader(self) -> List[Atom]:
         atoms = []
-        #with open(self.files, 'r') as file:
-        for row in self.files:
-            stringrow = str(row, 'utf-8')
-            atom = Atom(stringrow)
-            atoms.append(atom)
+        with open(self.files, 'r') as file:
+            """Tutaj zamiana dekodowania"""
+            for row in file:
+                #stringrow = str(row, 'utf-8')
+                #atom = Atom(stringrow)
+                atom = Atom(row)
+                atoms.append(atom)
 
         return atoms
 
