@@ -30,12 +30,6 @@ class Patcher:
         hets = [aux_atom for aux_atom in aux_atoms if 'LIG' in aux_atom.residue_type]
         output = atoms + hets
 
-
-        # shutil.rmtree('./tmp/')
-        # for item in os.listdir('./'):
-        #     if item.endswith('.merge'):
-        #         os.remove(os.path.join('./', item))
-        # os.chdir("./out")
         output_writer.write(output)
         return output
 

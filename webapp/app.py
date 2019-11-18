@@ -1,16 +1,12 @@
-from flask import Flask, make_response, request, render_template, Response, send_file
-from src import patcher, dataframe_prep, flex_prep
-import os
+from flask import Flask, request, render_template, send_file
+from src import flex_prep
+import os,shutil
 
 app = Flask(__name__)
 
-
-def validate_pdbs(rigid_pdb, flex_pdb):
-
-    return None
-
 @app.route('/')
 def form():
+    shutil.rmtree(os.path.dirname(app.root_path) + '\\workdir')
     return render_template("index.html")
 
 
@@ -25,13 +21,11 @@ def merge():
     dfprep = flex_prep.tideTheModel()
     dfprep.parse_the_dock(requested_rigid, requested_flex)
 
-    return send_file('result.pdb', as_attachment=True)
+    return send_file(os.path.dirname(app.root_path) + '\\workdir\\result.pdb', as_attachment=True)
 
 class AbsPath:
     def main_cwd():
         return os.path.dirname(app.instance_path)
-
-
 
 if __name__ == "__main__":
     app.run('127.0.0.1', 5000, debug=True)
