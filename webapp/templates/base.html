@@ -1,8 +1,52 @@
 <html>
+           <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #6a5acd;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+        body {
+            background-image: url("static/background1.png");
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+</style>
     <head>
         <title>Transform your PDB</title>
     </head>
     <body>
+<ul>
+  <li><a href="https://github.com/Rmadeye">GitHub</a></li>
+  <li><a href="https://www.cbmm.lodz.pl/en/">Institution</a></li>
+  <li><a href="https://www.rcsb.org/">PDB Database</a></li>
+  <li style="float:right"><a class="active" href="mailto: rmadaj@cbmm.lodz.pl">Contact</a></li>
+</ul>
 
     {%block content%} {% endblock %}
 
