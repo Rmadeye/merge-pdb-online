@@ -1,6 +1,6 @@
 from biopandas.pdb import PandasPdb
 from src.patcher import Patcher
-from webapp import app
+from webapp import webapp
 
 
 
@@ -9,7 +9,7 @@ class data_prep:
         pass
 
     def read_and_correct(self, basename: str, flexname: str) -> str:
-        workdir = app.AbsPath()
+        workdir = webapp.AbsPath()
         patcher = Patcher()
         rigid = PandasPdb().read_pdb(basename)
         flex = PandasPdb().read_pdb(flexname)

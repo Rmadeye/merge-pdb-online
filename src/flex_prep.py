@@ -1,6 +1,6 @@
 import re, os
 import src.dataframe_prep
-from webapp import app
+from webapp import webapp
 
 endtext= str('ENDMDL')
 pat=re.compile(r"ENDMDL")
@@ -11,7 +11,7 @@ class tideTheModel:
 
     def parse_the_dock(self, rigidfile: str, flexfile: str) -> str:
         dfp = src.dataframe_prep.data_prep()
-        workdir = app.AbsPath()
+        workdir = webapp.AbsPath()
         for line in flexfile:
             strline = str(line, 'utf-8')
             with open(workdir.main_cwd() + '/workdir/'+'flex.tmp.pdb', 'a+') as clnout:
