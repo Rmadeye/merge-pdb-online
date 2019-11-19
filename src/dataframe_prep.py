@@ -15,11 +15,11 @@ class data_prep:
         flex = PandasPdb().read_pdb(flexname)
         rigid.df['ATOM']['segment_id'] = 'tmp'
         flex.df['ATOM']['segment_id'] = 'tmp'
-        rigid.to_pdb(records=['ATOM'], path = workdir+'\\workdir\\rigid.tmp.pdb',
+        rigid.to_pdb(records=['ATOM'], path = workdir+'/workdir/rigid.tmp.pdb',
                      gz=False,
                      append_newline=True)
-        flex.to_pdb(records=['ATOM'], path = workdir+'\\workdir\\flex.tmp.pdb',
+        flex.to_pdb(records=['ATOM'], path = workdir+'/workdir/flex.tmp.pdb',
                      gz=False,
                      append_newline=True)
 
-        return patcher.patch(workdir + '\\workdir\\rigid.tmp.pdb', workdir+'\\workdir\\flex.tmp.pdb', workdir + '\\workdir\\result.pdb')
+        return patcher.patch(workdir + '/workdir/rigid.tmp.pdb', workdir+'/workdir/flex.tmp.pdb', workdir + '/workdir/result.pdb')

@@ -4,9 +4,15 @@ import os,shutil
 
 app = Flask(__name__)
 
+def clean():
+    folder = os.path.dirname(app.root_path) + '/workdir'
+    for the_file in os.listdir(folder):
+        file_path = os.path.join(folder, the_file)
+        if os.path.isfile(file_path):
+            os.unlink(file_path)
+
 @app.route('/')
 def form():
-    shutil.rmtree(os.path.dirname(app.root_path) + '\\workdir')
     return render_template("index.html")
 
 
@@ -14,14 +20,10 @@ def form():
 def merge():
     requested_rigid = request.files['rigid_pdb']
     requested_flex = request.files['flex_pdb']
-    """Dziala"""
-    # merger = patcher.Patcher()
-    # merger.patch(requested_rigid, requested_flex, 'result.pdb')
-    # """Bedzie"""
     dfprep = flex_prep.tideTheModel()
     dfprep.parse_the_dock(requested_rigid, requested_flex)
 
-    return send_file(os.path.dirname(app.root_path) + '\\workdir\\result.pdb', as_attachment=True)
+    return send_file(os.path.dirname(app.root_path) + '/workdir/result.pdb', as_attachment=True), clean()
 
 class AbsPath:
     def main_cwd():

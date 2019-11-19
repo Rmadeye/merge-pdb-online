@@ -10,10 +10,7 @@ class FileReader:
     def reader(self) -> List[Atom]:
         atoms = []
         with open(self.files, 'r') as file:
-            """Tutaj zamiana dekodowania"""
             for row in file:
-                #stringrow = str(row, 'utf-8')
-                #atom = Atom(stringrow)
                 atom = Atom(row)
                 atoms.append(atom)
 

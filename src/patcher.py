@@ -13,7 +13,6 @@ class Patcher:
 
         for i in range(len(atoms)):
             atom = atoms[i]
-            print(atom.residue_type)
             aux_atom = next(
                 (x for x in aux_atoms if x.name == atom.name and
                  x.residue_sequence_number == atom.residue_sequence_number and

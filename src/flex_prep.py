@@ -14,15 +14,15 @@ class tideTheModel:
         workdir = app.AbsPath.main_cwd()
         for line in flexfile:
             strline = str(line, 'utf-8')
-            with open(workdir + '\\workdir\\'+'flex.tmp.pdb', 'a+') as clnout:
+            with open(workdir + '/workdir/'+'flex.tmp.pdb', 'a+') as clnout:
                 clnout.write(strline)
                 if pat.search(strline) != None:
                     break
+
         for line in rigidfile:
             strline = str(line, 'utf-8')
-            with open(workdir + '\\workdir\\'+'rigid.tmp.pdb', 'a+') as rgout:
+            with open(workdir + '/workdir/'+'rigid.tmp.pdb', 'a+') as rgout:
                 rgout.write(strline)
-        print(clnout,rgout)
 
 
-        return dfp.read_and_correct(workdir+'\\workdir\\rigid.tmp.pdb', workdir+'\\workdir\\flex.tmp.pdb')
+        return dfp.read_and_correct(workdir+'/workdir/rigid.tmp.pdb', workdir+'/workdir/flex.tmp.pdb')
