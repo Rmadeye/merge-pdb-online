@@ -1,20 +1,17 @@
 {% extends "base.html" %}
-
 {% block  content  %}
-
 
 
         <center>
             <h1>Application transforming flexible PDB and rigid protein PDB files</h1>
-            <form action="/merge" method="post" enctype="multipart/form-data">
+            <form class="merger" action="/merge" method="post" enctype="multipart/form-data">
                 <label for="rigid">Rigid Protein PDB file</label>
                 <input type="file" name="rigid_pdb" id = "rigid">
                 <label for="rigid">Ligand with residues PDB file</label>
                 <input type="file" name="flex_pdb" id = "flex" />
-                <input type="submit" />
+                <hr/>
+                <input class="merger" type="submit" >
             </form>
-
-            <h3> Rmadeye </h3>
         </center>
 
 {% endblock %}

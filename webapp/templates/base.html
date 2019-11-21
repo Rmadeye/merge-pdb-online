@@ -4,11 +4,33 @@
             <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+.footer {
+  position: fixed;
+  float: right;
+  left: 0;
+  bottom: 0;
+  width: 5%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    margin: 1em 0;
+    padding: 0;
+}
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
 ::placeholder {
   color: red;
   opacity: 1; /* Firefox */
 }
-ul {
+ul.top {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -28,6 +50,14 @@ li a {
   text-decoration: none;
 }
 
+li b {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
 li a:hover:not(.active) {
   background-color: #6a5acd;
 }
@@ -40,17 +70,54 @@ li a:hover:not(.active) {
             background-repeat:no-repeat;
             background-size:cover;
         }
+      aside {
+  float: left;
+  padding: 20px;
+  width: 20%;
+  height: 100%;
+  background-color: #f1f1f1;
+}
 </style>
     <head>
         <title>Transform your PDB</title>
     </head>
     <body>
-<ul>
+<ul class = "top">
   <li><a href="https://github.com/Rmadeye">GitHub</a></li>
   <li><a href="https://www.cbmm.lodz.pl/en/">Institution</a></li>
   <li><a href="https://www.rcsb.org/">PDB Database</a></li>
   <li style="float:right"><a class="active" href="mailto: rmadaj@cbmm.lodz.pl">Contact</a></li>
 </ul>
+<section>
+  <aside>
+    <center>
+    <h3>Tips</h3>
+        </center>
+    <p>-> Remove all hydrogens and heteroatoms from the protein PDB file</p>
+    <p>-> Clean the flexible residues + ligand file by:</p>
+    <ul>
+      <li class = "b">Converting pdbqt file to pdb (e.g. OpenBabel app)</li>
+      <li>Choosing designated model (between MODEL and ENDMDL tags)</li>
+      <li>Reformatting to have only ATOM tags</li>
+    </ul>
+        <center>
+      <h3>Exemplary files</h3>
+            </center>
+            <form class="ligand" action="/send_lig" method="get" enctype="multipart/form-data">
+                <label >Ligand</label>
+                <input class = "ligand" type="submit">
+            </form>
+            <form class="protein" action="/send_prot" method="get" enctype="multipart/form-data">
+                <label >Protein</label>
+                <input class = "protein" type="submit">
+            </form>
+  </aside>
+</section>
+<section>
+    <div class="footer" style = "clear: both">
+  <p>Made by Rmadeye</p>
+</div>
+</section>
 
     {%block content%} {% endblock %}
 
