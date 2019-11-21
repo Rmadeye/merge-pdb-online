@@ -12,3 +12,4 @@ pandas = "*"
 
 [requires]
 python_version = "3.6"
+gunicorn = "20.0.0"
