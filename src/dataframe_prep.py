@@ -14,7 +14,9 @@ class data_prep:
         rigid = PandasPdb().read_pdb(basename)
         flex = PandasPdb().read_pdb(flexname)
         rigid.df['ATOM']['segment_id'] = 'tmp'
+        rigid.df['ATOM']['element_symbol'] != 'H'
         flex.df['ATOM']['segment_id'] = 'tmp'
+        flex.df['ATOM']['element_symbol'] != 'H'
         rigid.to_pdb(records=['ATOM'], path = workdir.main_cwd()+'/workdir/rigid.tmp.pdb',
                      gz=False,
                      append_newline=True)
