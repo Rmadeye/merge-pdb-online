@@ -13,7 +13,7 @@ class tideTheModel:
         dfp = src.dataframe_prep.data_prep()
         workdir = app.AbsPath()
         for line in flexfile:
-            print(os.listdir(workdir.main_cwd()+'/workdir'))
+            print(os.listdir(workdir.main_cwd()+'/workdir/'))
             strline = str(line, 'utf-8')
             with open(workdir.main_cwd() + '/workdir/'+'flex.tmp.pdb', 'a+') as clnout:
                 clnout.write(strline)
