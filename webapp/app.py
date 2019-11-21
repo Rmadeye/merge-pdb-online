@@ -29,6 +29,16 @@ def merge():
     else:
         return render_template("rigid_error.html")
 
+@app.route("/send_lig", methods = ["GET"])
+def send_lig():
+    return send_file(os.path.dirname(app.root_path) + '/sample/sample_lig_resids.pdb', as_attachment=True)
+
+
+@app.route("/send_prot", methods = ["GET"])
+def send_prot():
+
+    return send_file(os.path.dirname(app.root_path) + '/sample/prot.pdb', as_attachment=True)
+
 
 class AbsPath:
     def main_cwd(self):
