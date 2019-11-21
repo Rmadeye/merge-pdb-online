@@ -29,11 +29,21 @@ def merge():
     else:
         return render_template("rigid_error.html")
 
+@app.route("/send_lig", methods = ["GET"])
+def send_lig():
+    return send_file(os.path.dirname(app.root_path) + '/sample/sample_lig_resids.pdb', as_attachment=True)
+
+
+@app.route("/send_prot", methods = ["GET"])
+def send_prot():
+
+    return send_file(os.path.dirname(app.root_path) + '/sample/prot.pdb', as_attachment=True)
+
 
 class AbsPath:
     def main_cwd(self):
         return os.path.dirname(app.instance_path)
 
 
-if __name__ == "__main__":
-    app.run('127.0.0.1', 5000, debug=True)
+# if __name__ == "__main__":
+#     app.run('127.0.0.1', 5000, debug=True)
