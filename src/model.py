@@ -11,7 +11,7 @@ class Atom:
         self.occupancy = row[56:60]
         self.temperature_factor = row[61:66]
         # self.segment_identifier = row[73:76]
-        self.element_symbol = row[77:79]
+        self.element_symbol = row[76:79]
     def __str__(self):
         values = [
             "ATOM  ",
@@ -26,6 +26,6 @@ class Atom:
             self.occupancy.rjust(5),
             self.temperature_factor.rjust(5),
             # self.segment_identifier.rjust(4),
-            self.element_symbol.rjust(13)
+            self.element_symbol.rjust(14)
         ]
         return "".join(values)
