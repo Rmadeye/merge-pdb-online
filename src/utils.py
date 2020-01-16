@@ -12,6 +12,7 @@ class Utilities:
             file_path = os.path.join(folder, the_file)
             if os.path.isfile(file_path):
                 os.unlink(file_path)
+        open(folder + "/cleaned.txt", "w")
         return None
 
     def check_extensions(self, filename):
