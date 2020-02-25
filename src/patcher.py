@@ -26,7 +26,11 @@ class Patcher:
                 atom.z = aux_atom.z
                 atoms[i] = atom
 
-        hets = [aux_atom for aux_atom in aux_atoms if 'LIG' in aux_atom.residue_type]
+        self.aalist = [' ALA', ' ARG',' ASN',' ASP',' CYS',' GLU',' GLN',' GLY',' HIS',
+                  ' ILE',' LEU',' LYS',' MET',' PHE',' PRO',' SER',
+                  ' THR',' TRP',' TYR',' VAL']
+        hets = [aux_atom for aux_atom in aux_atoms if aux_atom.residue_type not in self.aalist]
+
         output = atoms + hets
 
         output_writer.write(output)
