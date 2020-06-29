@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, send_file
-from src import flex_prep, utils
+from src import decode_files, utils
 import os
 
 app = Flask(__name__)
@@ -21,13 +21,15 @@ def merge():
         return render_template("no_file.html")
     if utilities.check_extensions(requested_rigid.filename):
         if utilities.check_extensions(requested_flex.filename):
-            dfprep = flex_prep.tideTheModel()
-            dfprep.parse_the_dock(requested_rigid, requested_flex)
-            return send_file(os.path.dirname(app.root_path) + '/workdir/result.pdb', as_attachment=True), utilities.clean()
+            dfprep = decode_files.Decoder()
+            dfprep.bytes_to_pdb(requested_rigid, requested_flex)
+            return send_file(os.path.dirname(app.root_path) + '/workdir/result.pdb', as_attachment=True), \
+                   utilities.clean()
         else:
             return render_template("flex_error.html")
     else:
         return render_template("rigid_error.html")
+
 
 @app.route("/send_lig", methods = ["GET"])
 def send_lig():

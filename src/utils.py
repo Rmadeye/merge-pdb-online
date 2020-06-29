@@ -14,7 +14,8 @@ class Utilities:
                 os.unlink(file_path)
         open(folder + "/cleaned.txt", "w")
         return None
+        pass
 
     def check_extensions(self, filename):
-        if any(filename.endswith(e) for e in ['.pdb', '.txt']):
+        if any(filename.endswith(e) for e in ['.pdb', '.txt', '.pdbqt', '.save']):
             return True
